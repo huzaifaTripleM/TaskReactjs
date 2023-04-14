@@ -31,10 +31,7 @@ function App() {
                   <Link to="/" className="nav-link">Home</Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/contractors/add" className="nav-link">Add Contractor</Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/tenants" className="nav-link">View Tenants</Link>
+                  <Link to="/contractors/add" className="nav-link">Edit Contractor</Link>
                 </li>
                 <li className="nav-item">
                   <Link to="/tenants/add" className="nav-link">Add Tenant</Link>
