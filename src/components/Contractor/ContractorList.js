@@ -19,7 +19,8 @@ const ContractorList = ({ tenantId }) => {
       <div className="contractor-list">
         {contractors.map((contractor) => (
           <li key={contractor.id} className="contractor-item">
-            {contractor.name}
+         <div>  ID : {contractor.id} </div>
+          <div>Name : {contractor.name}</div> 
           </li>
         ))}
       </div>
