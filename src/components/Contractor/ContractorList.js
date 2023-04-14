@@ -13,8 +13,7 @@ const ContractorList = ({ tenantId }) => {
 
   return (
 <div className="contractor-list-container">
-  {loading && <p className="loading-message">Loading contractors...</p>}
-  {error && <p className="error-message">Failed to load contractors</p>}
+  
   {contractors && (
     <table className="contractor-table">
       <thead>

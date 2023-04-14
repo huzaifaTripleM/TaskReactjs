@@ -16,9 +16,7 @@ const TenantSelect = ({ onChange }) => {
 
   return (
     <div>
-      {loading && <p>Loading tenants...</p>}
-      {error && <p>Failed to load tenants</p>}
-      {console.log('here')}
+    
       {tenants && (
         <select onChange={handleSelectChange}>
           <option value="">Select Tenant</option>
