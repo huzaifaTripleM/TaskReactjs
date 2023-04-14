@@ -12,20 +12,32 @@ const ContractorList = ({ tenantId }) => {
   }, [dispatch, tenantId]);
 
   return (
-    <div className="contractor-list-container">
-    {loading && <p className="loading-message">Loading contractors...</p>}
-    {error && <p className="error-message">Failed to load contractors</p>}
-    {contractors && (
-      <div className="contractor-list">
+<div className="contractor-list-container">
+  {loading && <p className="loading-message">Loading contractors...</p>}
+  {error && <p className="error-message">Failed to load contractors</p>}
+  {contractors && (
+    <table className="contractor-table">
+      <thead>
+        <tr>
+          <th>Contractor ID</th>
+          <th>Contractor Name</th>
+        </tr>
+      </thead>
+      <tbody>
         {contractors.map((contractor) => (
-          <li key={contractor.id} className="contractor-item">
-         <div>  ID : {contractor.id} </div>
-          <div>Name : {contractor.name}</div> 
-          </li>
+          <tr key={contractor.id} className="contractor-row">
+            <td>{contractor.id}</td>
+            <td>{contractor.name}</td>
+          </tr>
         ))}
-      </div>
-    )}
-  </div>
+      </tbody>
+    </table>
+  )}
+</div>
+
+
+
+
   );
 };
 
