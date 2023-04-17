@@ -1,11 +1,10 @@
-import React from 'react';
 import { useDispatch } from 'react-redux';
-import { addContractor , updateContractor } from '../../redux/actions/contractorActions';
-import TenantSelect from '../Tenant/TenantSelect';
-import {useForm} from 'react-hook-form';
+import { updateContractor } from '../../redux/actions/contractorActions';
+import { useForm } from 'react-hook-form';
+import { Button, TextField } from '@mui/material';
 import "../../Styles/contractorForm.css";
 
-const ContractorForm = ({ tenantId }) => {
+const ContractorForm = () => {
   const dispatch = useDispatch();
   const { register, handleSubmit, reset } = useForm();
 
@@ -13,23 +12,15 @@ const ContractorForm = ({ tenantId }) => {
     const newContractor = {
       name: data.name, 
     };
-    dispatch(updateContractor(data.id , newContractor));
+    dispatch(updateContractor(data.ID , newContractor));
     reset();
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-       <div>
-        <label>ID:</label>
-        <input type="text" {...register('ID', { required: true })} />
-      </div>
-      <div>
-        <label>Name:</label>
-        <input type="text" {...register('name', { required: true })} />
-      </div>
-     
-      {/* <TenantSelect onChange={handleTenantChange} /> */}
-      <button type="submit">Edit Contractor</button>
+      <TextField label="ID" {...register('ID', { required: true })} />
+      <TextField label="Name" {...register('name', { required: true })} />
+      <Button variant="contained" type="submit">Edit Contractor</Button>
     </form>
   );
 };

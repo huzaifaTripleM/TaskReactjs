@@ -27,12 +27,7 @@ const contractorReducer = (state = initialState, action) => {
       return { ...state, loading: false, contractors: action.payload };
     case FETCH_CONTRACTORS_FAILURE:
       return { ...state, loading: false, error: action.payload };
-    case ADD_CONTRACTOR_REQUEST:
-      return { ...state, loading: true };
-    case ADD_CONTRACTOR_SUCCESS:
-      return { ...state, loading: false, contractors: [...state.contractors, action.payload] };
-    case ADD_CONTRACTOR_FAILURE:
-      return { ...state, loading: false, error: action.payload };
+  
     case UPDATE_CONTRACTOR_REQUEST:
       return { ...state, loading: true };
     case UPDATE_CONTRACTOR_SUCCESS:
@@ -42,15 +37,7 @@ const contractorReducer = (state = initialState, action) => {
       return { ...state, loading: false, contractors: updatedContractors };
     case UPDATE_CONTRACTOR_FAILURE:
       return { ...state, loading: false, error: action.payload };
-    case DELETE_CONTRACTOR_REQUEST:
-      return { ...state, loading: true };
-    case DELETE_CONTRACTOR_SUCCESS:
-      const filteredContractors = state.contractors.filter(
-        (contractor) => contractor.id !== action.payload
-      );
-      return { ...state, loading: false, contractors: filteredContractors };
-    case DELETE_CONTRACTOR_FAILURE:
-      return { ...state, loading: false, error: action.payload };
+   
     default:
       return state;
   }

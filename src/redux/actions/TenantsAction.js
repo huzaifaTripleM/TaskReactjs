@@ -3,43 +3,53 @@ import {
   FETCH_TENANTS_REQUEST,
   FETCH_TENANTS_SUCCESS,
   FETCH_TENANTS_FAILURE,
-  ADD_TENANT_REQUEST,
-  ADD_TENANT_SUCCESS,
-  ADD_TENANT_FAILURE,
-  DELETE_TENANT_REQUEST,
-  DELETE_TENANT_SUCCESS,
-  DELETE_TENANT_FAILURE,
+  UPDATE_TENANT_REQUEST,
+  UPDATE_TENANT_SUCCESS,
+  UPDATE_TENANT_FAILURE,
 } from '../types';
+
 
 // Fetch tenants
 export const fetchTenants = () => async (dispatch) => {
+  console.log("tenant")
   dispatch({ type: FETCH_TENANTS_REQUEST });
   try {
-    const response = await axios.get('/api/tenants');
+    const response = await axios.get('https://lyxhnfqadkwtmitlupzp.supabase.co/rest/v1/tenants' , {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx5eGhuZnFhZGt3dG1pdGx1cHpwIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODA4ODE2MjYsImV4cCI6MTk5NjQ1NzYyNn0.Q-0g9JV9VaJ59cqycpFUfqoHU9G3IMGA_6aXQNH1nEw'
+      },
+      
+    });
     dispatch({ type: FETCH_TENANTS_SUCCESS, payload: response.data });
   } catch (error) {
     dispatch({ type: FETCH_TENANTS_FAILURE, payload: error.message });
   }
 };
 
-// Add tenant
-export const addTenant = (tenant) => async (dispatch) => {
-  dispatch({ type: ADD_TENANT_REQUEST });
-  try {
-    const response = await axios.post('/api/tenants', tenant);
-    dispatch({ type: ADD_TENANT_SUCCESS, payload: response.data });
-  } catch (error) {
-    dispatch({ type: ADD_TENANT_FAILURE, payload: error.message });
-  }
-};
 
-// Delete tenant
-export const deleteTenant = (tenantId) => async (dispatch) => {
-  dispatch({ type: DELETE_TENANT_REQUEST });
+export const updateTenants = (contractorId, updatedContractor) => async (dispatch) => {
   try {
-    const response = await axios.delete(`/api/tenants/${tenantId}`);
-    dispatch({ type: DELETE_TENANT_SUCCESS, payload: response.data });
-  } catch (error) {
-    dispatch({ type: DELETE_TENANT_FAILURE, payload: error.message });
+    dispatch({ type: UPDATE_TENANT_REQUEST });
+    const res = await fetch(`https://lyxhnfqadkwtmitlupzp.supabase.co/rest/v1/tenants?id=eq.2`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx5eGhuZnFhZGt3dG1pdGx1cHpwIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODA4ODE2MjYsImV4cCI6MTk5NjQ1NzYyNn0.Q-0g9JV9VaJ59cqycpFUfqoHU9G3IMGA_6aXQNH1nEw'
+      },
+      body: JSON.stringify(updatedContractor),
+    });
+    const data = await res.json();
+
+    dispatch({
+      type: UPDATE_TENANT_SUCCESS,
+      payload: data,
+    });
+  } catch (err) {
+    dispatch({
+      type: UPDATE_TENANT_FAILURE,
+      payload: err.message,
+    });
   }
 };

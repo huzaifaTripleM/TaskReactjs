@@ -2,12 +2,6 @@ import {
     FETCH_CONTRACTORS_REQUEST,
     FETCH_CONTRACTORS_SUCCESS,
     FETCH_CONTRACTORS_FAILURE,
-    ADD_CONTRACTOR_REQUEST,
-    ADD_CONTRACTOR_SUCCESS,
-    ADD_CONTRACTOR_FAILURE,
-    DELETE_CONTRACTOR_REQUEST,
-    DELETE_CONTRACTOR_SUCCESS,
-    DELETE_CONTRACTOR_FAILURE,
     UPDATE_CONTRACTOR_REQUEST,
     UPDATE_CONTRACTOR_SUCCESS,
     UPDATE_CONTRACTOR_FAILURE,
@@ -40,54 +34,7 @@ import {
     }
   };
   
-  // Add contractor action
-  export const addContractor = (tenantId, contractor) => async (dispatch) => {
-    try {
-      dispatch({ type: ADD_CONTRACTOR_REQUEST });
-  
-      const res = await fetch(`/api/tenants/${tenantId}/contractors`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          'Authorization': 'Bearer your-token',
-          'x-api-key': 'your-api-key'
-        },
-        body: JSON.stringify(contractor),
-      });
-      const data = await res.json();
-  
-      dispatch({
-        type: ADD_CONTRACTOR_SUCCESS,
-        payload: data,
-      });
-    } catch (err) {
-      dispatch({
-        type: ADD_CONTRACTOR_FAILURE,
-        payload: err.message,
-      });
-    }
-  };
-  
-  // Delete contractor action
-  export const deleteContractor = (tenantId, contractorId) => async (dispatch) => {
-    try {
-      dispatch({ type: DELETE_CONTRACTOR_REQUEST });
-  
-      const res = await fetch(`/api/tenants/${tenantId}/contractors/${contractorId}`, {
-        method: "DELETE",
-      });
-  
-      dispatch({
-        type: DELETE_CONTRACTOR_SUCCESS,
-        payload: contractorId,
-      });
-    } catch (err) {
-      dispatch({
-        type: DELETE_CONTRACTOR_FAILURE,
-        payload: err.message,
-      });
-    }
-  };
+
   
   // Update contractor action
   export const updateContractor = (contractorId, updatedContractor) => async (dispatch) => {

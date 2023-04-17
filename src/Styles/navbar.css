@@ -1,43 +1,10 @@
-.container {
-  max-width: 960px;
-  margin: 0 auto;
-}
 
-.row {
-  display: flex;
-  justify-content: space-evenly;
-  margin: 0 -15px;
-}
 
-.col-md-6 {
-  flex: 0 0 50%;
-  max-width: 50%;
-  padding: 0 15px;
-}
-
-h1 {
-  font-size: 36px;
-  margin-bottom: 40px;
-}
-
-ul {
-    display: flex;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-li {
+.nav-item {
   margin-bottom: 10px;
 }
 
-a {
- 
-  color: #ff84cc;
-  text-decoration: none;
-  margin: 10px;
-}
-
-a:hover {
-    color: #ff0095;
+.nav-link:hover {
+  color: #fff;
+  background-color: #48a4ff;
 }

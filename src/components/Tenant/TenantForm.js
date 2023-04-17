@@ -1,13 +1,13 @@
 import {useForm} from 'react-hook-form';
 import {useDispatch} from 'react-redux';
-import {addTenant} from '../../redux/actions/TenantsAction';
+import {fetchTenants} from '../../redux/actions/TenantsAction';
 
 const TenantForm = () => {
   const dispatch = useDispatch();
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
   const onSubmit = (data) => {
-    dispatch(addTenant(data));
+    dispatch(fetchTenants(data));
     reset();
   };
 
