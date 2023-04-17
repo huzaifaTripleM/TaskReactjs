@@ -37,7 +37,7 @@ const TenantList = () => {
       <Paper className={classes.root}>
         {loading && <div>Loading tenants...</div>}
         {error && <div>Failed to load tenants: {error.message}</div>}
-        {tenants && (
+        {tenants && tenants.length > 0 && (
           <TableContainer>
             <Table className={classes.table}>
               <TableHead>

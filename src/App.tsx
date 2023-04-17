@@ -1,42 +1,42 @@
-import { Box, Container, Grid, Typography } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import ContractorList from './components/Contractor/ContractorList';
 import ContractorForm from './components/Contractor/ContractorFrom';
 import TenantList from './components/Tenant/TenantList';
 import TenantForm from './components/Tenant/TenantForm';
-import TenantSelect from './components/Tenant/TenantSelect';
-import  {useState} from 'react';
+
 import {FaList} from 'react-icons/fa'
 import {FiEdit} from 'react-icons/fi'
 import "../src/Styles/navbar.css"
 
 function App() {
-  const [tenantId, setTenantId] = useState(null);
+
 
 
   return (
     <Router>
       <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <Typography variant="h4" sx={{ textAlign: 'center', pt: 4 }}>
+        <Grid container spacing={2} >
+          <Grid item xs={12} style={{backgroundColor:'#3f51b5' , padding:'30px'}}>
+            <Typography variant="h4" sx={{ textAlign: 'center', pt: 4 , color:'white' }}>
               Contractor Management App
             </Typography>
           </Grid>
           <Grid item xs={3}>
             <Box sx={{ bgcolor: '#3f51b5', height: '100vh' }}>
-              <ul className="nav flex-column" style={{ listStyle: 'none' }}>
+              <ul className="nav flex-column" style={{ listStyle: 'none' , margin:'-17px'}}>
                 <li className="nav-item">
                   <Link to="/" className="nav-link" style={{color:"white"}}> <FaList style={{position:'relative', marginRight:'10px'  }}/> Home</Link>
                 </li>
-                <li >
-                  <Link to="/contractors/add" className="nav-link" >Edit Contractor</Link>
+                <li style={{marginBottom:'10px'}} >
+                  <Link to="/contractors/add" className="nav-link"  style={{color:"white"}}> <FiEdit style={{position:'relative', marginRight:'10px'  }}/> Edit Contractor</Link>
+                </li>
+              
+                <li className="nav-item">
+                  <Link to="/tenants/Edit" className="nav-link" style={{color:"white"}}> <FaList style={{position:'relative', marginRight:'10px'  }}/>  Edit Tenant</Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/tenants" className="nav-link">Tenant List</Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/tenants/add" className="nav-link">Add Tenant</Link>
+                  <Link to="/tenants" className="nav-link" style={{color:"white"}}> <FiEdit style={{position:'relative', marginRight:'10px'  }}/> Tenant List</Link>
                 </li>
               </ul>
             </Box>
